@@ -1,11 +1,10 @@
-# Arduino for ROS2
+# Arduino Communication
  ROS 2 package for communicating directly with arduino over serial. This work is based on https://github.com/Christian-Prather/youtube-serail-tutorial
  
  **Requirements:**
  - Ubuntu 20.04, Ubuntu 22.04
  - ROS2 Galactic, ROS2 Humble
  - Arduino IDE
- - Arduino MEGA2560, Arduino UNO 
  ## Instructions
  ### Setup
 
@@ -19,7 +18,7 @@
 
  Open your Arduino IDE.
 
- Open your Arduino script. Use the provided example script as a template. The script must be reading for a character serial input, and print a string when finished. 
+ Open your Arduino script. Use the provided example script as a template. The script must be reading for a character serial input, and return a string when finished. 
 
  Load the script onto the Arduino board.
 
@@ -37,7 +36,6 @@
  ```std::this_thread::sleep_for(std::chrono::milliseconds(1000));```
 
  ### Sending commands to arduino from your node
- See test_node as an example.
  To send commands to the Arduino from another node/package, first make sure the "arduino_com" is listed as a dependecy in your package.xml.
 
  ```<depend>arduino_com</depend>```
@@ -55,4 +53,4 @@
  
  ```std::string serial_interface::send_command(std::string port_name, int bot_rate, std::string command_char);```
 
- Where port_name is the port identified in your Arduino IDE, bot_rate is the bot ratte you set in the arduino script, and command_char is the character you are sending to the Arduino over serial. When the Arduino script should be set to print a string when it is finished. This string will then be returned by the send_command function. 
+ Where port_name is the port identified in your Arduino IDE, bot_rate is your bot rate, and command_char is the character you are sending to the Arduion over serial. 
